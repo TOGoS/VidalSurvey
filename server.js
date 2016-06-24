@@ -6,4 +6,4 @@ function handler() {
 	console.log('Server running on port ' + port + '...');
 }
 
-connect().use(serveStatic(__dirname)).listen(port, handler);
+connect().use(serveStatic('./app')).listen(port, handler);
