@@ -1,3 +1,6 @@
+
+'use strict';
+
 var connect = require('connect');
 var serveStatic = require('serve-static');
 var port = 5000;
