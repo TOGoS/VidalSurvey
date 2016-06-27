@@ -14,7 +14,7 @@
 				<form name="questionForm" novalidate ng-submit="SurveyCtrl.saveResponse()">
 					<div class="radio" ng-repeat="answer in SurveyCtrl.currentQuestion.answers | orderBy:'order'">
 						<label>
-							<input type="radio" id="answer-1" name="answer" value="{{answer.id}}" ng-model="SurveyCtrl.selectedAnswer" required ng-disabled="questionForm.$submitted"></input>
+							<input type="radio" id="answer-1" name="answer" value="{{answer.id}}" ng-model="SurveyCtrl.answerId" required ng-disabled="questionForm.$submitted"></input>
 							{{answer.answerText}}
 						</label>
 					</div>

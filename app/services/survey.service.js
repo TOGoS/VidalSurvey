@@ -9,9 +9,11 @@
 
 	function surveyService($log, $resource) {
 
-		var surveyResource = $resource('http://localhost:5500/questions/:id', { id: '@id'});
+		var questionsResource = $resource('http://localhost:5500/questions/:id', {id: '@id'});
+		var responsesResource = $resource('http://localhost:5500/responses/:id/', {id: '@id'});
 		var service = {
-			getQuestion: getQuestion
+			getQuestion: getQuestion,
+			saveResponse: saveResponse
 		};
 
 		return service;
@@ -19,8 +21,11 @@
 		////////////////////
 
 		function getQuestion() {
-			// return $http.get('data.json').then(success, failure);
-			return surveyResource.query().$promise.then(success, failure);
+			return questionsResource.query().$promise.then(success, failure);
+		}
+
+		function saveResponse(response) {
+			return responsesResource.save(response).$promise.then(success, failure);
 		}
 
 		function success(data){

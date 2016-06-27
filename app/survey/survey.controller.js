@@ -12,7 +12,7 @@
 		var SurveyCtrl = this;
 
 		SurveyCtrl.currentQuestion = {};
-		SurveyCtrl.selectedAnswer = '';
+		SurveyCtrl.answerId = '';
 		SurveyCtrl.saveResponse = saveResponse;
 
 		activate();
@@ -34,8 +34,14 @@
 		}
 
 		function saveResponse() {
-			$log.debug(SurveyCtrl.currentQuestion);
-			$log.debug(SurveyCtrl.currentQuestion.selectedAnswer);
+			var questionId = SurveyCtrl.currentQuestion.id;
+			var answerId = SurveyCtrl.answerId;
+			var response = {'id': '', 'questionId': questionId, 'answerId': answerId};
+			
+			return surveyService.saveResponse(response).then(function(data){
+				$log.debug('saved');
+				$log.debug(data);
+			});
 		}
 
 	}
