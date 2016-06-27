@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"order": {
+			"name": "order",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "order",
+			"order": 0
+		},
+		"questionText": {
+			"name": "questionText",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "questionText",
+			"order": 1
+		},
+		"questionId": {
+			"name": "questionId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "questionId",
+			"order": 2
+		}
+	}
+}
