@@ -5,10 +5,11 @@
 	angular.module('surveyApp')
 		.factory('surveyService', surveyService);
 
-	surveyService.$inject = ['$http', '$log'];
+	surveyService.$inject = ['$log', '$resource'];
 
-	function surveyService($http, $log) {
+	function surveyService($log, $resource) {
 
+		var surveyResource = $resource('http://localhost:5500/questions/:id', { id: '@id'});
 		var service = {
 			getQuestion: getQuestion
 		};
@@ -18,11 +19,13 @@
 		////////////////////
 
 		function getQuestion() {
-			return $http.get('data.json').then(success, failure);
+			// return $http.get('data.json').then(success, failure);
+			return surveyResource.query().$promise.then(success, failure);
 		}
 
-		function success(resp){
-			return resp.data;
+		function success(data){
+			$log.debug(data);
+			return data;
 		}
 
 		function failure(error){
