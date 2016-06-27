@@ -24,7 +24,6 @@
 		}
 
 		function success(data){
-			$log.debug(data);
 			return data;
 		}
 

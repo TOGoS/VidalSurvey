@@ -12,10 +12,10 @@
 			<div class="panel-body text-center">
 				<h1>{{ SurveyCtrl.currentQuestion.questionText }}:</h1>
 				<form name="questionForm" novalidate ng-submit="SurveyCtrl.saveResponse()">
-					<div class="radio" ng-repeat="option in SurveyCtrl.currentQuestion.options | orderBy:'order'">
+					<div class="radio" ng-repeat="answer in SurveyCtrl.currentQuestion.answers | orderBy:'order'">
 						<label>
-							<input type="radio" id="option-1" name="options" value="{{option.id}}" ng-model="SurveyCtrl.selectedOption" required ng-disabled="questionForm.$submitted"></input>
-							{{option.answerText}}
+							<input type="radio" id="answer-1" name="answer" value="{{answer.id}}" ng-model="SurveyCtrl.selectedAnswer" required ng-disabled="questionForm.$submitted"></input>
+							{{answer.answerText}}
 						</label>
 					</div>
 					<button class="btn btn-primary" ng-disabled="questionForm.$invalid || questionForm.$submitted">Submit</button>

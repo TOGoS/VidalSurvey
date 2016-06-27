@@ -12,7 +12,7 @@
 		var SurveyCtrl = this;
 
 		SurveyCtrl.currentQuestion = {};
-		SurveyCtrl.selectedOption = '';
+		SurveyCtrl.selectedAnswer = '';
 		SurveyCtrl.saveResponse = saveResponse;
 
 		activate();
@@ -35,7 +35,7 @@
 
 		function saveResponse() {
 			$log.debug(SurveyCtrl.currentQuestion);
-			$log.debug(SurveyCtrl.currentQuestion.selectedOption);
+			$log.debug(SurveyCtrl.currentQuestion.selectedAnswer);
 		}
 
 	}
