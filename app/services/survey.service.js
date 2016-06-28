@@ -13,6 +13,7 @@
 		var responsesResource = $resource('http://localhost:5500/responses/:id/', {id: '@id'});
 		var service = {
 			getQuestion: getQuestion,
+			getResults: getResults,
 			saveResponse: saveResponse
 		};
 
@@ -26,6 +27,10 @@
 
 		function saveResponse(response) {
 			return responsesResource.save(response).$promise.then(success, failure);
+		}
+
+		function getResults() {
+			return responsesResource.query().$promise.then(success, failure);
 		}
 
 		function success(data){

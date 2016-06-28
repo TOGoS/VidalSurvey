@@ -6,12 +6,13 @@
 				<label>
 					<input type="radio" id="answer-1" name="answer" value="{{answer.id}}" ng-model="SurveyCtrl.answerId" required ng-disabled="questionForm.$submitted"></input>
 					{{answer.answerText}}
-					<span ng-if="SurveyCtrl.displayResults"> - # answered (20%)</span>
+					<span ng-if="SurveyCtrl.displayResults"> - {{SurveyCtrl.answerCount(SurveyCtrl.currentQuestion.id, answer.id)}} answered ({{SurveyCtrl.answerPercentage(SurveyCtrl.currentQuestion.id, answer.id)}}%)
+					</span>
 				</label>
 			</div>
 			<hr>
 			<button class="btn btn-primary" ng-disabled="questionForm.$invalid || questionForm.$submitted">Submit</button>
-			<a href ng-click="SurveyCtrl.startOver()" ng-if="SurveyCtrl.displayResults" class="btn pull-right">Start over</a>
+			<a href ng-click="SurveyCtrl.startOver()" ng-if="SurveyCtrl.displayResults" class="btn btn-default">Start over</a>
 		</form>
 	</div>
 </div>

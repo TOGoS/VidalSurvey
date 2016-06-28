@@ -5,15 +5,18 @@
 	angular.module('surveyApp')
 		.controller('SurveyController', SurveyController);
 
-	SurveyController.$inject = ['$log', '$location', '$route', 'surveyService'];
+	SurveyController.$inject = ['$log', '$location', '$route', '$filter', 'surveyService'];
 
-	function SurveyController($log, $location, $route, surveyService) {
+	function SurveyController($log, $location, $route, $filter, surveyService) {
 
 		var SurveyCtrl = this;
 
+		SurveyCtrl.answerPercentage = answerPercentage;
+		SurveyCtrl.answerCount = answerCount;
 		SurveyCtrl.answerId = '';
 		SurveyCtrl.currentQuestion = {};
 		SurveyCtrl.displayResults = false;
+		SurveyCtrl.results = [];
 		SurveyCtrl.saveResponse = saveResponse;
 		SurveyCtrl.startOver = startOver;
 
@@ -25,7 +28,7 @@
 			$log.debug('SurveyCtrl has been activated.');
 			
 			getQuestion().then(function(){
-				$log.debug(SurveyCtrl.currentQuestion);
+				// $log.debug(SurveyCtrl.currentQuestion);
 			});
 		}
 
@@ -47,7 +50,7 @@
 
 		function displayResults(){
 			return surveyService.getResults().then(function(data){
-				$log.debug(data);
+				SurveyCtrl.results = data;
 				SurveyCtrl.displayResults = true;
 			});
 		}
@@ -56,6 +59,16 @@
 			SurveyCtrl.answerId = '';
 			SurveyCtrl.displayResults = false;
 			$route.reload();
+		}
+
+		function answerCount(questionId, answerId) {
+			return $filter('resultsCount')(SurveyCtrl.results, questionId, answerId);
+		}
+
+		function answerPercentage(questionId, answerId) {
+			var count = $filter('resultsCount')(SurveyCtrl.results, questionId, answerId);
+			var length = SurveyCtrl.results.length;
+			return (count/length).toFixed(2) * 100;
 		}
 
 	}
