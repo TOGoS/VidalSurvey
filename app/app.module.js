@@ -2,6 +2,6 @@
 
 	'use strict';
 
-	angular.module('surveyApp', ['ngResource']);
+	angular.module('surveyApp', ['ngResource', 'ngRoute']);
 
 })();

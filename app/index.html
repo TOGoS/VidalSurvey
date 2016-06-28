@@ -4,31 +4,19 @@
 	<title>Survey</title>
 	<link rel="stylesheet" type="text/css" href="http://bootswatch.com/readable/bootstrap.min.css">
 </head>
-<body ng-controller="SurveyController as SurveyCtrl">
+<body ng-controller="SurveyController as SurveyCtrl" ng-cloak>
 
 	<div class="container">
-		
-		<div class="panel panel-default">
-			<div class="panel-body text-center">
-				<h1>{{ SurveyCtrl.currentQuestion.questionText }}:</h1>
-				<form name="questionForm" novalidate ng-submit="SurveyCtrl.saveResponse()">
-					<div class="radio" ng-repeat="answer in SurveyCtrl.currentQuestion.answers | orderBy:'order'">
-						<label>
-							<input type="radio" id="answer-1" name="answer" value="{{answer.id}}" ng-model="SurveyCtrl.answerId" required ng-disabled="questionForm.$submitted"></input>
-							{{answer.answerText}}
-						</label>
-					</div>
-					<button class="btn btn-primary" ng-disabled="questionForm.$invalid || questionForm.$submitted">Submit</button>
-				</form>
-			</div>
-		</div>
+		<ng-view></ng-view>
 	</div>
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="app.module.js"></script>
+	<script type="text/javascript" src="app.config.js"></script>
 	<script type="text/javascript" src="survey/survey.controller.js"></script>
 	<script type="text/javascript" src="services/survey.service.js"></script>
 </body>
