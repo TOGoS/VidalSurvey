@@ -9,12 +9,12 @@
 			"id": "order",
 			"order": 0
 		},
-		"questionText": {
-			"name": "questionText",
+		"answerText": {
+			"name": "answerText",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "questionText",
+			"id": "answerText",
 			"order": 1
 		},
 		"questionId": {
