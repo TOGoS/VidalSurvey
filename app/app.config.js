@@ -13,10 +13,6 @@
 			.when('/', {
 				templateUrl: '/survey/question.partial.html'
 			})
-			.when('/responses/', {
-				templateUrl: '/survey/responses.partial.html'
-			});
-
 	}
 
 })();

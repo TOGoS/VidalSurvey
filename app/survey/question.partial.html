@@ -1,12 +1,12 @@
-<div class="panel panel-default">
-	<div class="question panel-body text-left">
+<div id="question" class="panel panel-default">
+	<div class="panel-body text-left">
 		<h1>{{ SurveyCtrl.currentQuestion.questionText }}:</h1>
 		<form name="questionForm" novalidate ng-submit="SurveyCtrl.saveResponse()">
 			<div class="radio" ng-repeat="answer in SurveyCtrl.currentQuestion.answers | orderBy:'order'">
 				<label>
 					<input type="radio" id="answer-1" name="answer" value="{{answer.id}}" ng-model="SurveyCtrl.answerId" required ng-disabled="questionForm.$submitted"></input>
 					{{answer.answerText}}
-					<span ng-if="SurveyCtrl.displayResults"> - {{SurveyCtrl.answerCount(SurveyCtrl.currentQuestion.id, answer.id)}} answered ({{SurveyCtrl.answerPercentage(SurveyCtrl.currentQuestion.id, answer.id)}}%)
+					<span class="stats-text" ng-if="SurveyCtrl.displayResults"> - {{SurveyCtrl.answerCount(SurveyCtrl.currentQuestion.id, answer.id)}} answered ({{SurveyCtrl.answerPercentage(SurveyCtrl.currentQuestion.id, answer.id)}}%)
 					</span>
 				</label>
 			</div>
