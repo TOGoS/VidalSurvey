@@ -37,18 +37,19 @@
 
 		/**
 		 * Get question 
-		 * @return {Object} - A promise.
+		 * @return {Object} - the promise.
 		 */
 		function getQuestion() {
 			return surveyService.getQuestions().then(function(data){
-				SurveyCtrl.currentQuestion = data[0]; // default to first item for now to 
-													  // make app a single quesiton survey
+				// Set first item as default currentQuestion
+				// for now to make app a single quesiton survey
+				SurveyCtrl.currentQuestion = data[0]; 							  
 			});	
 		}
 
 		/**
 		 * Save user response to current question
-		 * @return {Object} - A promise.
+		 * @return {Object} - the promise.
 		 */
 		function saveResponse() {
 			var answerId = SurveyCtrl.answerId;
@@ -62,7 +63,7 @@
 
 		/**
 		 * Get results and display them.
-		 * @return {Object} - A promise.
+		 * @return {Object} - the promise.
 		 */		
 		function displayResults(){
 			return surveyService.getResults().then(function(data){

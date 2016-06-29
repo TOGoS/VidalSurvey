@@ -13,3 +13,7 @@ A single-question survey.
 4. On a new terminal window, navigate to repository's root directory
 5. Run ```node server.js``` to start server on localhost:5000
 6. On your preferred browser, go to localhost:5000
+
+## TODO
+1. Add support for multiple questions
+2. Add reporting multiple question results

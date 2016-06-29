@@ -12,7 +12,7 @@
 		var questionsResource = $resource('http://localhost:5500/questions/:id', {id: '@id'});
 		var responsesResource = $resource('http://localhost:5500/responses/:id/', {id: '@id'});
 		var service = {
-			getQuestion: getQuestion,
+			getQuestions: getQuestions,
 			getResults: getResults,
 			saveResponse: saveResponse
 		};
