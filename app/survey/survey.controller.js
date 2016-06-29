@@ -11,9 +11,9 @@
 
 		var SurveyCtrl = this;
 
-		SurveyCtrl.answerPercentage = answerPercentage;
 		SurveyCtrl.answerCount = answerCount;
 		SurveyCtrl.answerId = '';
+		SurveyCtrl.answerPercentage = answerPercentage;
 		SurveyCtrl.currentQuestion = {};
 		SurveyCtrl.displayResults = false;
 		SurveyCtrl.results = [];
@@ -24,20 +24,32 @@
 
 		////////////////////
 
+		/**
+		 * Activate controller
+		 */
 		function activate(){
 			$log.debug('SurveyCtrl has been activated.');
 			
 			getQuestion().then(function(){
-				// $log.debug(SurveyCtrl.currentQuestion);
+				$log.debug(SurveyCtrl.currentQuestion);
 			});
 		}
 
+		/**
+		 * Get question 
+		 * @return {Object} - A promise.
+		 */
 		function getQuestion() {
-			return surveyService.getQuestion().then(function(data){
-				SurveyCtrl.currentQuestion = data[0];
+			return surveyService.getQuestions().then(function(data){
+				SurveyCtrl.currentQuestion = data[0]; // default to first item for now to 
+													  // make app a single quesiton survey
 			});	
 		}
 
+		/**
+		 * Save user response to current question
+		 * @return {Object} - A promise.
+		 */
 		function saveResponse() {
 			var answerId = SurveyCtrl.answerId;
 			var questionId = SurveyCtrl.currentQuestion.id;
@@ -48,6 +60,10 @@
 			});
 		}
 
+		/**
+		 * Get results and display them.
+		 * @return {Object} - A promise.
+		 */		
 		function displayResults(){
 			return surveyService.getResults().then(function(data){
 				SurveyCtrl.results = data;
@@ -55,16 +71,27 @@
 			});
 		}
 
+		/**
+		 * Start survey over by reloading page.
+		 */
 		function startOver() {
 			SurveyCtrl.answerId = '';
 			SurveyCtrl.displayResults = false;
 			$route.reload();
 		}
 
+		/**
+		 * Get answer count.
+		 * @return {Number} - the count.
+		 */
 		function answerCount(questionId, answerId) {
 			return $filter('resultsCount')(SurveyCtrl.results, questionId, answerId);
 		}
 
+		/**
+		 * Get answer percentage.
+		 * @return {Number} - the percentage.
+		 */
 		function answerPercentage(questionId, answerId) {
 			var count = $filter('resultsCount')(SurveyCtrl.results, questionId, answerId);
 			var length = SurveyCtrl.results.length;

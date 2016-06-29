@@ -21,22 +21,41 @@
 
 		////////////////////
 
-		function getQuestion() {
+		/**
+		 * Get questions.
+		 * @return {Object} - a promise.
+		 */
+		function getQuestions() {
 			return questionsResource.query().$promise.then(success, failure);
 		}
 
+		/**
+		 * Save response.
+		 * @return {Object} - a promise.
+		 */
 		function saveResponse(response) {
 			return responsesResource.save(response).$promise.then(success, failure);
 		}
 
+		/**
+		 * Get results.
+		 * @return {Object} - a promise.
+		 */
 		function getResults() {
 			return responsesResource.query().$promise.then(success, failure);
 		}
 
+		/**
+		 * Handle a request's successful state.
+		 * @return {Object} data - the data.
+		 */
 		function success(data){
 			return data;
 		}
 
+		/**
+		 * Handle a request's failed state.
+		 */
 		function failure(error){
 			$log.error(error.status + ' - ' + error.statusText + ': ' + error.data);
 		}
