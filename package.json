@@ -1,7 +1,7 @@
 {
   "name": "survey",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple survey question tracker with in AngularJS and MongoDB",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
